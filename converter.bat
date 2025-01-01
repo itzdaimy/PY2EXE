@@ -2,7 +2,6 @@
 title PyInstaller Packager
 color 0A
 
-:: Ensure that PyInstaller is installed and available
 where pyinstaller > nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo PyInstaller is not installed or not found in your PATH.
@@ -11,7 +10,6 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b
 )
 
-:: Display the current working directory for debugging
 echo Current working directory: %cd%
 
 :main
@@ -51,7 +49,6 @@ if not exist "%script%" (
     goto main
 )
 
-:: Run PyInstaller in a separate Command Prompt
 start cmd.exe /k pyinstaller --onefile "%script%"
 echo PyInstaller has been launched in a separate Command Prompt.
 pause
@@ -74,7 +71,6 @@ if not exist "%script%" (
     goto main
 )
 
-:: Run PyInstaller in a separate Command Prompt (no console)
 start cmd.exe /k pyinstaller --onefile --noconsole "%script%"
 echo PyInstaller has been launched in a separate Command Prompt.
 pause
