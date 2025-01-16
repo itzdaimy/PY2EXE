@@ -1,7 +1,10 @@
-# PY2EXE
-converts every .py files into .exe!
+# PY2EXE  
+Easily convert your `.py` files into `.exe`!  
 
-# setps to follow:
+## Steps  
+1. **Download** `bootstrapper.exe`.  
+2. **Run** the file.  
 
-#1: download boostrapper.exe
-#2: Run it and done :)
+That's it—you're done! 🚀  
+
+⭐ If you found this helpful, consider giving us a star!
