@@ -1,81 +1,104 @@
 @echo off
-title PyInstaller Packager
+title Py2Exe v2
 color 0A
 
+:: Check if PyInstaller is installed
 where pyinstaller > nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
-    echo PyInstaller is not installed or not found in your PATH.
-    echo Please install PyInstaller by running 'pip install pyinstaller'.
+    echo ====================================================
+    echo  PyInstaller is not installed or found in your PATH.
+    echo  Please install PyInstaller by running:
+    echo      pip install pyinstaller
+    echo ====================================================
     pause
     exit /b
 )
 
-echo Current working directory: %cd%
-
-:main
+:mainMenu
 cls
-echo ===========================================
-echo          PyInstaller Packager
-echo ===========================================
-echo.
+echo ================================================
+echo                  Py2Exe v2
+
+echo ================================================
+echo   Package your Python scripts into executables
+echo   Current working directory: %cd%
+echo ================================================
 echo 1. Package with console (Default)
 echo 2. Package without console (No Console)
-echo 3. Exit
-echo.
-echo ===========================================
-set /p choice="Choose an option (1-3): "
+echo 3. Help
+echo 4. Exit
+echo ================================================
+set /p choice="Choose an option (1-4): "
 
-if "%choice%"=="1" goto withConsole
-if "%choice%"=="2" goto noConsole
-if "%choice%"=="3" goto exit
-echo Invalid choice! Please try again.
+if "%choice%"=="1" goto packageWithConsole
+if "%choice%"=="2" goto packageNoConsole
+if "%choice%"=="3" goto help
+if "%choice%"=="4" goto exit
+echo Invalid choice! Please enter a valid option.
 pause
-goto main
+goto mainMenu
 
-:withConsole
+:packageWithConsole
 cls
-echo ===========================================
-echo Packaging with console...
-set /p script="Enter the path to your Python script (e.g., main.py): "
+echo ================================================
+echo       Packaging with console (Default)
+echo ================================================
+set /p script="Enter the path to your Python script (default: launcher.py): "
 if "%script%"=="" (
     set script=launcher.py
 )
-echo Using script: %script%
-
 if not exist "%script%" (
     echo Error: The script "%script%" does not exist.
     pause
-    goto main
+    goto mainMenu
 )
-
-start cmd.exe /k pyinstaller --onefile "%script%"
-echo PyInstaller has been launched in a separate Command Prompt.
+echo Packaging "%script%" with console...
+pyinstaller --onefile "%script%"
+echo Process completed. Check the 'dist' folder for your executable.
 pause
-goto main
+goto mainMenu
 
-:noConsole
+:packageNoConsole
 cls
-echo ===========================================
-echo Packaging without console (windowed mode)...
-set /p script="Enter the path to your Python script (e.g., launcher.py): "
+echo ================================================
+echo  Packaging without console (Windowed Mode)
+echo ================================================
+set /p script="Enter the path to your Python script (default: launcher.py): "
 if "%script%"=="" (
     set script=launcher.py
 )
-echo Using script: %script%
-
 if not exist "%script%" (
     echo Error: The script "%script%" does not exist.
     pause
-    goto main
+    goto mainMenu
 )
-
-start cmd.exe /k pyinstaller --onefile --noconsole "%script%"
-echo PyInstaller has been launched in a separate Command Prompt.
+echo Packaging "%script%" without console...
+pyinstaller --onefile --noconsole "%script%"
+echo Process completed. Check the 'dist' folder for your executable.
 pause
-goto main
+goto mainMenu
+
+:help
+cls
+echo ================================================
+echo                    Help
+echo ================================================
+echo  This script packages Python scripts into executables
+echo  using PyInstaller. You can choose between:
+echo     - Console Mode: Includes a terminal for output.
+echo     - No Console: Creates a windowed application.
+echo ================================================
+echo  Notes:
+echo  - Ensure PyInstaller is installed via 'pip install pyinstaller'.
+echo  - Your packaged executable will appear in the 'dist' folder.
+echo ================================================
+pause
+goto mainMenu
 
 :exit
 cls
-echo Thanks for using PyInstaller Packager!
+echo ================================================
+echo          Thanks for using Py2Exe v2!
+echo ================================================
 timeout /t 3 > nul
 exit
