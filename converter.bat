@@ -2,7 +2,6 @@
 title Py2Exe v2
 color 0A
 
-:: Check if PyInstaller is installed
 where pyinstaller > nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     echo ====================================================
