@@ -6,6 +6,6 @@ Easily convert your `.py` files into `.exe`!
 1. **Download** `bootstrapper.exe`.  
 2. **Run** the file.  
 
-That's it—you're done! 🚀  
+That's it you're done! 🚀  
 
 ⭐ If you found this helpful, consider giving us a star!
