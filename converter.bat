@@ -17,7 +17,6 @@ if %ERRORLEVEL% NEQ 0 (
 cls
 echo ================================================
 echo                  Py2Exe v2
-
 echo ================================================
 echo   Package your Python scripts into executables
 echo   Current working directory: %cd%
