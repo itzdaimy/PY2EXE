@@ -1,5 +1,5 @@
 # PY2EXE  
-## This is NOT updated unless broken. 
+## This is NOT updated unless broken. (dm on discord if broken)
 Easily convert your `.py` files into `.exe`!  
 
 ## Steps  
